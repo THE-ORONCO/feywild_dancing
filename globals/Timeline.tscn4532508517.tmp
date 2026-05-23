@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dpj4pukcucy58"]
+
+[ext_resource type="Script" uid="uid://c8iylv07yvqm0" path="res://globals/timeline.gd" id="1_ei28w"]
+[ext_resource type="Script" uid="uid://c8e5prb6v7ejb" path="res://entities/metronome/metronome.gd" id="2_har0e"]
+[ext_resource type="AudioStream" uid="uid://dmdfhemij0u7d" path="res://assets/250552__druminfected__metronome.wav" id="3_gfsds"]
+
+[node name="Timeline" type="Node" unique_id=656048984]
+script = ExtResource("1_ei28w")
+
+[node name="Metronome" type="Node" parent="." unique_id=1200086830]
+script = ExtResource("2_har0e")
+
+[node name="Timer" type="Timer" parent="Metronome" unique_id=618023666]
+unique_name_in_owner = true
+autostart = true
+
+[node name="MetronomeSound" type="AudioStreamPlayer" parent="Metronome" unique_id=1191443114]
+unique_name_in_owner = true
+stream = ExtResource("3_gfsds")

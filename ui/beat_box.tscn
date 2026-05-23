@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cjvt3mcjpkrdc"]
+
+[ext_resource type="Theme" uid="uid://b6j3p7kgq37hf" path="res://theme.tres" id="1_ntm22"]
+[ext_resource type="Script" uid="uid://b0x6qqeeuqvbx" path="res://ui/beat_box.gd" id="2_woayv"]
+
+[node name="BeatBox" type="TextureButton" unique_id=225742118]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ntm22")
+toggle_mode = true
+stretch_mode = 5
+script = ExtResource("2_woayv")
+track = null
+center_color = null
+ping_time = null
+ping_radius = null
+checked = null

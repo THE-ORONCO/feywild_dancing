@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://472lut72n8ta"]
+
+[ext_resource type="Script" uid="uid://c8e5prb6v7ejb" path="res://entities/metronome/metronome.gd" id="1_uwuts"]
+
+[node name="Metronome" type="Node" unique_id=435160590]
+script = ExtResource("1_uwuts")
+
+[node name="Timer" type="Timer" parent="." unique_id=831621275]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true

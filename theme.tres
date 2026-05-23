@@ -1,0 +1,42 @@
+[gd_resource type="Theme" format=3 uid="uid://b6j3p7kgq37hf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_110ce"]
+bg_color = Color(0, 0.6936494, 0.6343443, 0.38431373)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1x85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjfk0"]
+bg_color = Color(0.11372549, 0.93333334, 0.93333334, 0.54901963)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvktn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
+bg_color = Color(0.58431375, 1, 0.9529412, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvktn"]
+bg_color = Color(0.008247688, 0.0090209665, 0.16329625, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj6dk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+
+[resource]
+CheckBox/font_sizes/font_size = 16
+CheckBox/styles/hover = SubResource("StyleBoxFlat_110ce")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_110ce")
+ItemList/colors/guide_color = Color(0.7, 0.7, 0.7, 0.25)
+ItemList/constants/h_separation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 0
+ItemList/constants/v_separation = 0
+ItemList/styles/focus = SubResource("StyleBoxEmpty_e1x85")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_cjfk0")
+ItemList/styles/panel = SubResource("StyleBoxEmpty_wvktn")
+ItemList/styles/selected = SubResource("StyleBoxFlat_e1x85")
+Panel/styles/panel = SubResource("StyleBoxFlat_wvktn")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_vj6dk")
