@@ -53,10 +53,11 @@ func _ready() -> void:
 	if unchecked_icon: 	self.texture_normal = unchecked_icon
 	
 	Timeline.register(self)
-	
+
 func _process(delta: float) -> void:
 	if _hit_tween:
 		queue_redraw()
+
 	
 func _draw() -> void:
 	draw_circle(size / 2., 2., center_color)
