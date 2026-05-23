@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1e5gx7yahf33"]
+
+[ext_resource type="Script" uid="uid://mbtdq2d5xs1r" path="res://levels/ball_room_day_1/ball_room_day_1.gd" id="1_d6jjm"]
+
+[node name="BallRoomDay1" type="Node2D" unique_id=1249236843]
+script = ExtResource("1_d6jjm")

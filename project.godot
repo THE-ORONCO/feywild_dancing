@@ -31,7 +31,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/limbo_console/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/limbo_console/plugin.cfg")
 
 [gui]
 

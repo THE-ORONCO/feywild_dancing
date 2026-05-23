@@ -25,7 +25,11 @@ const TIMELINE_ICON_TRI_FULL = preload("uid://45kdtvib7r40")
 var _beat_boxes: Array[BeatBox] = []
 
 func _ready() -> void:
+	
+	var i := 0
+	
 	for s in range(segments):
+		i+= 1
 		var circ: BeatBox = BEAT_BOX.instantiate()
 		circ.unchecked_icon = TIMELINE_ICON_CIRCLE_EMPTY
 		circ.checked_icon = TIMELINE_ICON_CIRCLE_FULL
@@ -34,6 +38,7 @@ func _ready() -> void:
 		circle.add_child(circ)
 		_beat_boxes.append(circ)
 		
+		#if i %2 == 0:
 		var tri: BeatBox = BEAT_BOX.instantiate()
 		tri.unchecked_icon = TIMELINE_ICON_TRI_EMPTY
 		tri.checked_icon = TIMELINE_ICON_TRI_FULL
@@ -42,6 +47,7 @@ func _ready() -> void:
 		triangle.add_child(tri)
 		_beat_boxes.append(tri)
 		
+		#if i % 3 == 0:
 		var squa: BeatBox = BEAT_BOX.instantiate()
 		squa.unchecked_icon = TIMELINE_ICON_SQUARE_EMPTY
 		squa.checked_icon = TIMELINE_ICON_SQUARE_FULL

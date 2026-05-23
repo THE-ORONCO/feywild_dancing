@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cwv16ikbhbore"]
+
+[ext_resource type="Script" uid="uid://b7vllw7qn3hq5" path="res://entities/enemy/enemy.gd" id="1_dt443"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_4wwj3"]
+[ext_resource type="Script" uid="uid://b82hhkih4acug" path="res://components/move_component.gd" id="3_d50e0"]
+[ext_resource type="AudioStream" uid="uid://424uecbxqp0o" path="res://assets/257928__kane53126__body-thud.wav" id="4_61ikd"]
+[ext_resource type="AudioStream" uid="uid://cpxkvn18tf7ju" path="res://assets/252712__jrosin__sorry-whisper-male.wav" id="5_4wwj3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wse8f"]
+
+[node name="Enemy" type="Area2D" unique_id=678526148]
+script = ExtResource("1_dt443")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=929799013]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("2_4wwj3")
+flip_v = true
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="MoveCmp" type="Node" parent="." unique_id=1748670062 node_paths=PackedStringArray("moved_entity")]
+script = ExtResource("3_d50e0")
+moved_entity = NodePath("..")
+metadata/_custom_type_script = "uid://b82hhkih4acug"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2006954863]
+shape = SubResource("CircleShape2D_wse8f")
+
+[node name="Thud" type="AudioStreamPlayer" parent="." unique_id=1743199752]
+stream = ExtResource("4_61ikd")
+volume_db = -18.758
+
+[node name="Sorry" type="AudioStreamPlayer" parent="." unique_id=2134313106]
+stream = ExtResource("5_4wwj3")
+max_polyphony = 5

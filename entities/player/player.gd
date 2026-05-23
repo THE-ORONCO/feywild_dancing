@@ -1,3 +1,4 @@
+class_name Player
 extends Area2D
 
 const inputs = {"right": Vector2.RIGHT,

@@ -1,102 +1,43 @@
 [gd_scene format=4 uid="uid://ckavqb25bdaul"]
 
-[ext_resource type="Script" uid="uid://d0nhl0c06ortq" path="res://world.gd" id="1_036b0"]
-[ext_resource type="Script" uid="uid://b7vllw7qn3hq5" path="res://entities/enemy/enemy.gd" id="3_ioo17"]
-[ext_resource type="Script" uid="uid://c0jo6t1mjs4dp" path="res://entities/player/player.gd" id="4_dwbse"]
-[ext_resource type="AudioStream" uid="uid://424uecbxqp0o" path="res://assets/257928__kane53126__body-thud.wav" id="4_pkg7o"]
+[ext_resource type="Script" uid="uid://d0nhl0c06ortq" path="res://levels/world/world.gd" id="1_036b0"]
+[ext_resource type="TileSet" uid="uid://c8q2q547ppt00" path="res://assets/tileset.tres" id="2_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://cwv16ikbhbore" path="res://entities/enemy/enemy.tscn" id="3_ioo17"]
+[ext_resource type="PackedScene" uid="uid://drj5l6cuickqd" path="res://entities/player/player.tscn" id="4_pkg7o"]
 [ext_resource type="Script" uid="uid://b8or0eoc85xlt" path="res://ui/tracks.gd" id="5_036b0"]
 [ext_resource type="Script" uid="uid://bth6sxw5f0rf6" path="res://ui/tracker.gd" id="5_dwbse"]
-[ext_resource type="Script" uid="uid://b82hhkih4acug" path="res://components/move_component.gd" id="5_gbfbk"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="5_pkg7o"]
 [ext_resource type="Theme" uid="uid://b6j3p7kgq37hf" path="res://theme.tres" id="6_dwbse"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
-texture = ExtResource("5_pkg7o")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_dwbse"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_036b0")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wse8f"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
 
 [node name="World" type="Node2D" unique_id=25454870]
 script = ExtResource("1_036b0")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=599858402]
 tile_map_data = PackedByteArray("AAD9//3/AQAAAAAAAAD+//3/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP3/AQAAAAAAAAACAP3/AQAAAAAAAAADAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD9/wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD//wQAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAD+//7/AQABAAEAAAD+////AQABAAEAAAD+/wAAAQABAAEAAAD+/wEAAQABAAEAAAD+/wIAAQABAAEAAAD+/wMAAQABAAEAAAD//wMAAQABAAEAAAD//wIAAQABAAEAAAD//wEAAQABAAEAAAD///7/AQABAAEAAAD/////AQABAAEAAAD//wAAAQABAAEAAAAAAP//AQABAAEAAAAAAAAAAQABAAEAAAABAAAAAQABAAEAAAACAAAAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAADAAAAAQABAAEAAAADAP//AQABAAEAAAACAP//AQABAAEAAAABAP//AQABAAEAAAAAAP7/AQABAAEAAAABAP7/AQABAAEAAAACAP7/AQABAAEAAAADAP7/AQABAAEAAAAEAP7/AQABAAEAAAAEAP//AQABAAEAAAAEAAAAAQABAAEAAAAEAAEAAQABAAEAAAAEAAIAAQABAAEAAAADAAIAAQABAAEAAAACAAIAAQABAAEAAAABAAIAAQABAAEAAAABAAEAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQABAAEAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAA=")
-tile_set = SubResource("TileSet_dwbse")
+tile_set = ExtResource("2_pkg7o")
 
-[node name="Enemy" type="Area2D" parent="." unique_id=1295070071]
+[node name="Enemy" parent="." unique_id=678526148 instance=ExtResource("3_ioo17")]
 position = Vector2(-43, 51)
-script = ExtResource("3_ioo17")
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=693769445]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.203125, 0.203125)
-texture = ExtResource("5_pkg7o")
-flip_v = true
-metadata/_aseprite_wizard_interface_config_ = {
-"animation_section": false,
-"layer_section": false,
-"pending_changes": {
-"convert_fps_field": 60.0,
-"convert_ms_field": 16.0,
-"convert_to_fps": false,
-"embed_tex": true,
-"i_mode": 0,
-"keep_anim_length": false,
-"layers": [],
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"scale": "1.0",
-"slice": "",
-"source": "",
-"source_uid": -1
-},
-"slice_section": false
-}
+[node name="Enemy2" parent="." unique_id=1830185859 instance=ExtResource("3_ioo17")]
+position = Vector2(83, -15)
 
-[node name="MoveCmp" type="Node" parent="Enemy" unique_id=1187911580 node_paths=PackedStringArray("moved_entity")]
-script = ExtResource("5_gbfbk")
-moved_entity = NodePath("..")
-metadata/_custom_type_script = "uid://b82hhkih4acug"
+[node name="Enemy4" parent="." unique_id=125044386 instance=ExtResource("3_ioo17")]
+position = Vector2(113, -15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=1038797062]
-shape = SubResource("CircleShape2D_wse8f")
+[node name="Enemy5" parent="." unique_id=1381921712 instance=ExtResource("3_ioo17")]
+position = Vector2(144, -14)
 
-[node name="Thud" type="AudioStreamPlayer" parent="Enemy" unique_id=739595869]
-stream = ExtResource("4_pkg7o")
+[node name="Enemy6" parent="." unique_id=182377191 instance=ExtResource("3_ioo17")]
+position = Vector2(48, -14)
 
-[node name="Player" type="Area2D" parent="." unique_id=311152914]
-script = ExtResource("4_dwbse")
+[node name="Enemy7" parent="." unique_id=1442220462 instance=ExtResource("3_ioo17")]
+position = Vector2(15, -48)
 
-[node name="Sprite" type="Sprite2D" parent="Player" unique_id=1561581457]
-scale = Vector2(0.25000003, 0.25)
-texture = ExtResource("5_pkg7o")
+[node name="Enemy3" parent="." unique_id=1543606187 instance=ExtResource("3_ioo17")]
+position = Vector2(145, 80)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=268964481]
-shape = SubResource("CircleShape2D_dwbse")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=405309206]
-
-[node name="Thud" type="AudioStreamPlayer" parent="Player" unique_id=1625491757]
-stream = ExtResource("4_pkg7o")
-
-[node name="MoveCmp" type="Node" parent="Player" unique_id=1681080966 node_paths=PackedStringArray("moved_entity")]
-unique_name_in_owner = true
-script = ExtResource("5_gbfbk")
-moved_entity = NodePath("..")
-metadata/_custom_type_script = "uid://b82hhkih4acug"
+[node name="Player" parent="." unique_id=2114953000 instance=ExtResource("4_pkg7o")]
+position = Vector2(-16, -16)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=870665407]
 
@@ -154,7 +95,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("5_036b0")
-segments = 6
 
 [node name="Square" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=659186142]
 unique_name_in_owner = true
