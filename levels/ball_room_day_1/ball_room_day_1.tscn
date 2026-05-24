@@ -8,49 +8,64 @@
 [ext_resource type="PackedScene" uid="uid://it8bljs22nag" path="res://entities/day_timer/day_timer.tscn" id="6_h5yfe"]
 [ext_resource type="Script" uid="uid://de80skdnvfqeu" path="res://entities/titania/titania.gd" id="7_h5yfe"]
 [ext_resource type="PackedScene" uid="uid://8o4qisnvy0an" path="res://ui/timeline_ui.tscn" id="8_dakuq"]
+[ext_resource type="PackedScene" uid="uid://bvp2ahyuktt6k" path="res://entities/knight/knight.tscn" id="9_auksc"]
 
 [node name="BallRoomDay1" type="Node2D" unique_id=1249236843]
 script = ExtResource("1_d6jjm")
 
 [node name="Ballroom" type="TileMapLayer" parent="." unique_id=562251714]
-tile_map_data = PackedByteArray("AAAFAAYAAAAKAAEAAAANAAAAAAAKAAEAAQANAAMAAAALAAIAAAAFAAMAAAALAAEAAAAFAAQAAAAKAAEAAAAFAAUAAAAKAAEAAAAFAAcAAAAKAAEAAAAFAAgAAAAKAAEAAAAFAAkAAAAKAAEAAAAFAAoAAAAKAAEAAAAFAAsAAAAKAAEAAAAFAAwAAAAKAAEAAAAFAA0AAAAKAAEAAAAFAA4AAAALAAEAAgAGAAMAAAAKAAEAAQAGAA4AAAAKAAEAAgAHAAMAAAAKAAEAAQAHAA4AAAAKAAEAAgAIAAMAAAAKAAEAAQAIAA4AAAAKAAEAAgAJAAAAAAALAAEAAAAJAAEAAAAKAAEAAAAJAAIAAAAKAAEAAAAJAAMAAAAJAAEAAAAJAA4AAAAKAAEAAgAKAAAAAAAKAAEAAQAKAAMAAAAKAAIAAAAKAA4AAAAKAAEAAgALAAAAAAAKAAEAAQALAAMAAAALAAIAAAALAA4AAAAKAAEAAgAMAAAAAAAKAAEAAQAMAAMAAAALAAIAAAAMAA4AAAAKAAEAAgANAA4AAAAKAAEAAgAOAAAAAAAKAAEAAQAOAAMAAAALAAIAAAAOAA4AAAAKAAEAAgAPAAAAAAAKAAEAAQAPAAEAAAAIAAIAAAAPAAIAAAAiAAAAAAAPAAMAAAALAAIAAAAPAA4AAAAKAAEAAgAQAAAAAAAKAAEAAQAQAAMAAAALAAIAAAAQAA4AAAAKAAEAAgARAAAAAAAKAAEAAQARAAMAAAALAAIAAAARAA4AAAAKAAEAAgASAAAAAAAKAAEAAQASAAMAAAALAAIAAAASAA4AAAAKAAEAAgATAAAAAAAKAAEAAQATAAMAAAALAAIAAAATAA4AAAAKAAEAAgAUAAAAAAAKAAEAAQAUAAMAAAAMAAIAAAAUAA4AAAAKAAEAAgAVAAAAAAALAAEAAQAVAAEAAAAKAAEAAwAVAAIAAAAKAAEAAwAVAAMAAAAJAAEAAAAVAA4AAAAKAAEAAgAWAAMAAAAKAAEAAQAWAA4AAAAKAAEAAgAXAAMAAAAKAAEAAQAXAA4AAAAKAAEAAgAYAAMAAAAKAAEAAQAYAA4AAAAKAAEAAgAZAAMAAAALAAEAAQAZAAQAAAAKAAEAAwAZAAUAAAAKAAEAAwAZAAYAAAAKAAEAAwAZAAcAAAAKAAEAAwAZAAgAAAAKAAEAAwAZAAkAAAAKAAEAAwAZAAoAAAAKAAEAAwAZAAsAAAAKAAEAAwAZAAwAAAAKAAEAAwAZAA0AAAAKAAEAAwAZAA4AAAALAAEAAwA=")
+tile_map_data = PackedByteArray("AAAFAAYAAAAKAAEAAAANAAAAAAAKAAEAAQANAAMAAAALAAIAAAAFAAMAAAALAAEAAAAFAAQAAAAKAAEAAAAFAAUAAAAKAAEAAAAFAAcAAAAKAAEAAAAFAAgAAAAKAAEAAAAFAAkAAAAKAAEAAAAFAAoAAAAKAAEAAAAFAAsAAAAKAAEAAAAFAAwAAAAKAAEAAAAFAA0AAAAKAAEAAAAFAA4AAAALAAEAAgAGAAMAAAAKAAEAAQAGAA4AAAAKAAEAAgAHAAMAAAAKAAEAAQAHAA4AAAAKAAEAAgAIAAMAAAAKAAEAAQAIAA4AAAAKAAEAAgAJAAAAAAALAAEAAAAJAAEAAAAKAAEAAAAJAAIAAAAKAAEAAAAJAAMAAAAJAAEAAAAJAA4AAAAKAAEAAgAKAAAAAAAKAAEAAQAKAAMAAAAKAAIAAAAKAA4AAAAKAAEAAgALAAAAAAAKAAEAAQALAAMAAAALAAIAAAALAA4AAAAKAAEAAgAMAAAAAAAKAAEAAQAMAAMAAAALAAIAAAAMAA4AAAAKAAEAAgANAA4AAAAKAAEAAgAOAAAAAAAKAAEAAQAOAAMAAAALAAIAAAAOAA4AAAAKAAEAAgAPAAAAAAAKAAEAAQAPAAEAAAAIAAIAAAAPAAIAAAAiAAAAAAAPAAMAAAALAAIAAAAPAA4AAAAKAAEAAgAQAAAAAAAKAAEAAQAQAAMAAAALAAIAAAAQAA4AAAAKAAEAAgARAAAAAAAKAAEAAQARAAMAAAALAAIAAAARAA4AAAAKAAEAAgASAAAAAAAKAAEAAQASAAMAAAALAAIAAAASAA4AAAAKAAEAAgATAAAAAAAKAAEAAQATAAMAAAALAAIAAAATAA4AAAAKAAEAAgAUAAAAAAAKAAEAAQAUAAMAAAAMAAIAAAAUAA4AAAAKAAEAAgAVAAAAAAALAAEAAQAVAAEAAAAKAAEAAwAVAAIAAAAKAAEAAwAVAAMAAAAJAAEAAAAVAA4AAAAKAAEAAgAWAAMAAAAKAAEAAQAWAA4AAAAKAAEAAgAXAAMAAAAKAAEAAQAXAA4AAAAKAAEAAgAYAAMAAAAKAAEAAQAYAA4AAAAKAAEAAgAZAAMAAAALAAEAAQAZAAQAAAAKAAEAAwAZAAUAAAAKAAEAAwAZAAYAAAAKAAEAAwAZAAcAAAAKAAEAAwAZAAgAAAAKAAEAAwAZAAkAAAAKAAEAAwAZAAoAAAAKAAEAAwAZAAsAAAAKAAEAAwAZAAwAAAAKAAEAAwAZAA0AAAAKAAEAAwAZAA4AAAALAAEAAwAHAAkAAAAJAAIAAAAHAAUAAAAJAAIAAAAXAAUAAAAJAAIAAAAXAAkAAAAJAAIAAAAMAAwAAAAJAAIAAAASAAwAAAAJAAIAAAAPAAwAAAAJAAIAAAAXAAwAAAAJAAIAAAAIAAYAAAAJAAIAAAAHAAsAAAAJAAIAAAAVAAcAAAAJAAIAAAAVAAwAAAAJAAIAAAAWAAgAAAAJAAIAAAA=")
 tile_set = ExtResource("2_og3vc")
 
 [node name="Dialogue" parent="." unique_id=2069907924 instance=ExtResource("3_1p6a0")]
 unique_name_in_owner = true
 
-[node name="Player" parent="." unique_id=2114953000 instance=ExtResource("4_h5yfe")]
-position = Vector2(250, 87)
+[node name="Player" parent="." unique_id=1553058755 instance=ExtResource("4_h5yfe")]
+position = Vector2(264, 104)
 
 [node name="Servants" type="Node2D" parent="." unique_id=879498339]
 
 [node name="Left" type="Node2D" parent="Servants" unique_id=2011299384]
 
 [node name="Servant2" parent="Servants/Left" unique_id=678526148 instance=ExtResource("5_dakuq")]
-position = Vector2(222, 115)
-start_direction = Vector2(-1, 0)
-
-[node name="Servant4" parent="Servants/Left" unique_id=1613884677 instance=ExtResource("5_dakuq")]
-position = Vector2(221, 101)
+position = Vector2(232, 120)
 start_direction = Vector2(-1, 0)
 
 [node name="Servant6" parent="Servants/Left" unique_id=2007786958 instance=ExtResource("5_dakuq")]
-position = Vector2(221, 87)
+position = Vector2(104, 120)
+start_direction = Vector2(-1, 0)
+
+[node name="Servant3" parent="Servants/Left" unique_id=1237370409 instance=ExtResource("5_dakuq")]
+position = Vector2(232, 152)
 start_direction = Vector2(-1, 0)
 
 [node name="Right" type="Node2D" parent="Servants" unique_id=1161135659]
 
 [node name="Servant1" parent="Servants/Right" unique_id=1398476857 instance=ExtResource("5_dakuq")]
-position = Vector2(284, 114)
-start_direction = Vector2(1, 0)
-
-[node name="Servant3" parent="Servants/Right" unique_id=1237370409 instance=ExtResource("5_dakuq")]
-position = Vector2(283, 99)
+position = Vector2(280, 184)
 start_direction = Vector2(1, 0)
 
 [node name="Servant5" parent="Servants/Right" unique_id=391713401 instance=ExtResource("5_dakuq")]
-position = Vector2(283, 85)
+position = Vector2(232, 184)
 start_direction = Vector2(1, 0)
+
+[node name="Servant4" parent="Servants/Right" unique_id=1613884677 instance=ExtResource("5_dakuq")]
+position = Vector2(152, 184)
+start_direction = Vector2(1, 0)
+
+[node name="Up" type="Node2D" parent="Servants" unique_id=39418113]
+
+[node name="Servant6" parent="Servants/Up" unique_id=1593431349 instance=ExtResource("5_dakuq")]
+position = Vector2(136, 136)
+
+[node name="Servant7" parent="Servants/Up" unique_id=796545073 instance=ExtResource("5_dakuq")]
+position = Vector2(344, 168)
+
+[node name="Servant8" parent="Servants/Up" unique_id=1213681147 instance=ExtResource("5_dakuq")]
+position = Vector2(248, 152)
+
+[node name="Servant9" parent="Servants/Up" unique_id=1273550350 instance=ExtResource("5_dakuq")]
+position = Vector2(168, 104)
 
 [node name="DayTimer" parent="." unique_id=51867827 instance=ExtResource("6_h5yfe")]
 
@@ -66,3 +81,15 @@ position = Vector2(190, 132)
 [node name="TimelineUI" parent="." unique_id=517322816 instance=ExtResource("8_dakuq")]
 unique_name_in_owner = true
 visible = false
+
+[node name="Servant" parent="." unique_id=1065335487 instance=ExtResource("9_auksc")]
+position = Vector2(168, 72)
+
+[node name="Servant4" parent="." unique_id=2030710732 instance=ExtResource("9_auksc")]
+position = Vector2(184, 200)
+
+[node name="Servant2" parent="." unique_id=2082979148 instance=ExtResource("9_auksc")]
+position = Vector2(328, 72)
+
+[node name="Servant3" parent="." unique_id=541243884 instance=ExtResource("9_auksc")]
+position = Vector2(312, 200)

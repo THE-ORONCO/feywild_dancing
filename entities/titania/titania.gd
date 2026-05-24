@@ -64,7 +64,7 @@ func punish() -> void:
 			print("punish dancer ", i, ": ", dancer)
 			var punish_tween := create_tween()
 			running_tweens_count += 1
-			
+			punish_tween.tween_interval(.5)
 			dancer.set_meta("punished", true)
 			
 			beam_progress[i] = 0.
@@ -82,10 +82,11 @@ func punish() -> void:
 			punish_tween.tween_property(camera, "offset", off, 0.1)
 			
 			
-			if dancer is Player:
+			if dancer.is_in_group("player"):
 				punish_tween.tween_callback(get_tree().reload_current_scene)
 			else:
 				punish_tween.tween_callback(dancer.queue_free)
+
 			punish_tween.tween_interval(.4)
 			punish_tween.finished.connect(func(): running_tweens_count -= 1)
 
@@ -117,7 +118,7 @@ func _draw() -> void:
 		var progress := beam_progress[i]
 		var target := to_local(dancer.global_position)
 		var start := target + Vector2.UP * 300.
-		var end: Vector2 = lerp(start, target + Vector2.DOWN * Values.TILE_SIZE, progress)
+		var end: Vector2 = lerp(start, target + Vector2.DOWN * Values.TILE_SIZE / 2., progress)
 
 		draw_line(start, end, Color.WHITE, beam_wobble[i])
 		draw_circle(end, beam_wobble[i] / 1.8, Color.WHITE)

@@ -1,22 +1,22 @@
-[gd_scene format=3 uid="uid://cwv16ikbhbore"]
+[gd_scene format=3 uid="uid://bvp2ahyuktt6k"]
 
-[ext_resource type="Script" uid="uid://b7vllw7qn3hq5" path="res://entities/servant/servant.gd" id="1_dt443"]
-[ext_resource type="Texture2D" uid="uid://bhda05l7wlovt" path="res://assets/tileset_sprites.aseprite" id="2_4wwj3"]
-[ext_resource type="Script" uid="uid://b82hhkih4acug" path="res://components/move_component.gd" id="3_d50e0"]
-[ext_resource type="AudioStream" uid="uid://424uecbxqp0o" path="res://assets/257928__kane53126__body-thud.wav" id="4_61ikd"]
-[ext_resource type="AudioStream" uid="uid://dn5tped54ska6" path="res://assets/512568__foxboyprower__bump1.wav" id="5_sucns"]
+[ext_resource type="Script" uid="uid://cne74tgw7gx1" path="res://entities/knight/knight.gd" id="1_dxbyu"]
+[ext_resource type="Texture2D" uid="uid://bhda05l7wlovt" path="res://assets/tileset_sprites.aseprite" id="2_2dcwt"]
+[ext_resource type="Script" uid="uid://b82hhkih4acug" path="res://components/move_component.gd" id="3_q60ft"]
+[ext_resource type="AudioStream" uid="uid://424uecbxqp0o" path="res://assets/257928__kane53126__body-thud.wav" id="4_5j12y"]
+[ext_resource type="AudioStream" uid="uid://b1muapwxlwjun" path="res://assets/446128__justinvoke__metal-clank-4.wav" id="5_3qtxb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wse8f"]
 radius = 5.0
 
 [node name="Servant" type="Area2D" unique_id=678526148 groups=["dancer"]]
-script = ExtResource("1_dt443")
+script = ExtResource("1_dxbyu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=929799013]
 position = Vector2(-4.7683716e-07, -4.7683716e-07)
-texture = ExtResource("2_4wwj3")
+texture = ExtResource("2_2dcwt")
 region_enabled = true
-region_rect = Rect2(576, 0, 16, 16)
+region_rect = Rect2(576, 16, 16, 16)
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": false,
@@ -42,18 +42,17 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 
 [node name="MoveCmp" type="Node2D" parent="." unique_id=1339279765 node_paths=PackedStringArray("moved_entity")]
-script = ExtResource("3_d50e0")
+script = ExtResource("3_q60ft")
 moved_entity = NodePath("..")
-move_on_track = 2
 metadata/_custom_type_script = "uid://b82hhkih4acug"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2006954863]
 shape = SubResource("CircleShape2D_wse8f")
 
 [node name="Thud" type="AudioStreamPlayer" parent="." unique_id=1743199752]
-stream = ExtResource("4_61ikd")
+stream = ExtResource("4_5j12y")
 volume_db = -18.758
 
-[node name="Bump" type="AudioStreamPlayer" parent="." unique_id=2134313106]
-stream = ExtResource("5_sucns")
+[node name="Clank" type="AudioStreamPlayer" parent="." unique_id=2134313106]
+stream = ExtResource("5_3qtxb")
 max_polyphony = 5

@@ -19,6 +19,7 @@ var _reset_buffer := false
 func _ready() -> void:
 	move_cmp.bumped_wall.connect(func(_i): $Thud.play())
 	bumped_entity.connect(made_mistake.emit)
+	move_cmp.target_dir = Vector2.UP
 	
 	
 func _input(event: InputEvent):

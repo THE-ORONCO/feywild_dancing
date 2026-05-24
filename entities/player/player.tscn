@@ -8,8 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
 radius = 5.0
 
-[node name="Player" type="Area2D" unique_id=2114953000 groups=["dancer"]]
+[node name="Player" type="Area2D" unique_id=1553058755 groups=["dancer", "player"]]
 script = ExtResource("1_bls4j")
+metadata/_custom_type_script = "uid://c0jo6t1mjs4dp"
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1165099047]
 texture = ExtResource("2_bls4j")
@@ -26,4 +27,5 @@ stream = ExtResource("3_8fjmc")
 unique_name_in_owner = true
 script = ExtResource("4_qiwj3")
 moved_entity = NodePath("..")
+move_on_track = 3
 metadata/_custom_type_script = "uid://b82hhkih4acug"

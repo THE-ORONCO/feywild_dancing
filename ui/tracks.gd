@@ -53,46 +53,53 @@ func hit_range(from: float, to: float) -> void:
 		if from <= along_ratio and along_ratio <= to:
 			beat_box.hit() 
 
-func add_square(number:=1) -> void:
+func add_square(number:=1) -> BeatBox:
 	square.show()
-	for i in range(number):
-		var squa: BeatBox = BEAT_BOX.instantiate()
-		squa.unchecked_icon = square_empty
-		squa.checked_icon = square_full
-		squa.sound = square_sound
-		squa.track = Timeline.Track.SQUARE
-		square.add_child(squa)
-		_beat_boxes.append(squa)
 
-func add_triangle(number:=1) -> void:
+	var squa: BeatBox = BEAT_BOX.instantiate()
+	squa.unchecked_icon = square_empty
+	squa.checked_icon = square_full
+	squa.sound = square_sound
+	squa.track = Timeline.Track.SQUARE
+	square.add_child(squa)
+	_beat_boxes.append(squa)
+	
+	return squa
+
+func add_triangle(number:=1) -> BeatBox:
 	triangle.show()
-	for i in range(number):
-		var tri: BeatBox = BEAT_BOX.instantiate()
-		tri.unchecked_icon = triangle_empty
-		tri.checked_icon = triangle_full
-		tri.sound = triangle_sound
-		tri.track = Timeline.Track.TRIANG
-		triangle.add_child(tri)
-		_beat_boxes.append(tri)
 
-func add_circle(number:=1) -> void:
+	var tri: BeatBox = BEAT_BOX.instantiate()
+	tri.unchecked_icon = triangle_empty
+	tri.checked_icon = triangle_full
+	tri.sound = triangle_sound
+	tri.track = Timeline.Track.TRIANG
+	triangle.add_child(tri)
+	_beat_boxes.append(tri)
+	
+	return tri
+
+func add_circle(number:=1) -> BeatBox:
 	circle.show()
-	for i in range(number):
-		var circ: BeatBox = BEAT_BOX.instantiate()
-		circ.unchecked_icon = circle_empty
-		circ.checked_icon = circle_full
-		circ.sound = circle_sound
-		circ.track = Timeline.Track.CIRCLE
-		circle.add_child(circ)
-		_beat_boxes.append(circ)
 
-func add_diamond(number:=1) -> void:
+	var circ: BeatBox = BEAT_BOX.instantiate()
+	circ.unchecked_icon = circle_empty
+	circ.checked_icon = circle_full
+	circ.sound = circle_sound
+	circ.track = Timeline.Track.CIRCLE
+	circle.add_child(circ)
+	_beat_boxes.append(circ)
+	return circ
+
+func add_diamond(number:=1) -> BeatBox:
 	diamond.show()
-	for i in range(number):
-		var dia: BeatBox = BEAT_BOX.instantiate()
-		dia.unchecked_icon = diamond_empty
-		dia.checked_icon = diamond_full
-		dia.sound = diamond_sound
-		dia.track = Timeline.Track.DIAMON
-		diamond.add_child(dia)
-		_beat_boxes.append(dia)
+
+	var dia: BeatBox = BEAT_BOX.instantiate()
+	dia.unchecked_icon = diamond_empty
+	dia.checked_icon = diamond_full
+	dia.sound = diamond_sound
+	dia.track = Timeline.Track.DIAMON
+	diamond.add_child(dia)
+	_beat_boxes.append(dia)
+
+	return dia

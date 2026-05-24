@@ -3,10 +3,11 @@ extends Node2D
 @onready var dialogue: Dialogue = %Dialogue
 @onready var day_timer: DayTimer = $DayTimer
 @onready var timeline_ui: TimelineUI = %TimelineUI
+const WIN_SCREEN = preload("uid://bsnqddp7yonko")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Values.has_seen(dialogue) || true:
+	if Values.has_seen(dialogue):
 		start_the_day()
 	else:
 		dialogue.show_dialog([
@@ -20,12 +21,34 @@ func _ready() -> void:
 			"You hear someone wisper that they don't want to dance anymore.",
 			"But suddenly your hands grip your lute and you start playing unable to stop."
 		]).connect(start_the_day)
+		
+	day_timer.day_over.connect(get_tree().change_scene_to_packed.bind(WIN_SCREEN))
 
 func start_the_day() -> void:
 	timeline_ui.show()
 	
-	for i in range(10):
-		timeline_ui.tracks.add_triangle(1)
+	for i in range(12):
+		if i % 4 == 0:
+			var tri:= timeline_ui.tracks.add_triangle()
+			tri.button_pressed = true
+			tri.disabled = true
+		else:
+			timeline_ui.tracks.add_triangle()
+		if i % 2 == 0:
+			if i % 4 == 0:
+				var dia: = timeline_ui.tracks.add_diamond()
+				dia.button_pressed = true
+				dia.disabled = true
+			else: 
+				timeline_ui.tracks.add_diamond()
+
+		if i % 3 == 0:
+			if i % 6  == 0:
+				var sq: = timeline_ui.tracks.add_square()
+				sq.button_pressed = true
+				sq.disabled = true
+			else:
+				timeline_ui.tracks.add_square()
 		await get_tree().create_timer(.2).timeout
 
 	Metronome.start()

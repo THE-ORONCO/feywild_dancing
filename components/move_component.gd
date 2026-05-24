@@ -15,13 +15,15 @@ var _last_safe_position: Vector2
 var _ray: RayCast2D
 var _move_tween: Tween
 var _rotate_tween: Tween
+var _bump_circle: float = -1.
 
 func _snap(pos: Vector2) -> Vector2:
 	return pos.snapped(Vector2.ONE * Values.TILE_SIZE)
 
 func _ready() -> void:
+	moved_entity.position -= Vector2.ONE * Values.TILE_SIZE/2.
 	moved_entity.position = moved_entity.position.snapped(Vector2.ONE * Values.TILE_SIZE)
-	moved_entity.position += Vector2.ONE * Values.TILE_SIZE/2
+	moved_entity.position += Vector2.ONE * Values.TILE_SIZE/2.
 	_last_safe_position = moved_entity.position
 	
 	Timeline.tick.connect(_do_move)
@@ -49,7 +51,10 @@ func move(target: Vector2, next_tick_delta: float):
 
 	else: # bump
 		var collider := _ray.get_collider()
+		
+
 		_emit_collision_info(collider)
+	
 	
 	queue_redraw()
 			
@@ -76,15 +81,24 @@ func _handle_collision(body: CollisionObject2D) -> void:
 	if _move_tween != null || is_instance_valid(_move_tween):
 		_move_tween.kill()
 		move(_last_safe_position, Timeline.next_tick_delta(move_on_track))
-	_emit_collision_info(body)
-		
+	_emit_collision_info(body)		
+	
+	var t:= create_tween()
+	t.tween_property(self, "_bump_circle", 16., .2)
+	t.tween_callback(func(): _bump_circle = -1)
+
+func _physics_process(delta: float) -> void:
+	queue_redraw()
 func _draw() -> void:
 	var tri_tip := _move_dir * Values.TILE_SIZE / 2.2
 	var head := -_move_dir * 5
+	var color := Timeline.track_color(move_on_track)
 	draw_circle(
 		tri_tip,
 		1.,
-		Timeline.track_color(move_on_track)
+		color
 	)
+	if _bump_circle >= 0.:
+		draw_circle(Vector2.ZERO, _bump_circle, color, false)
 
 	
