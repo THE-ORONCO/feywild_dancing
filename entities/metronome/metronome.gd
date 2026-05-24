@@ -2,6 +2,12 @@ extends Node
 
 @onready var timer: Timer = %Timer
 
+func start() -> void:
+	timer.start()
+
+func stop() -> void:
+	timer.stop()
+
 func time_left() -> float:
 	return timer.time_left
 

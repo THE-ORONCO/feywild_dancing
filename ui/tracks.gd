@@ -4,57 +4,47 @@ extends Control
 @export_range(1, 100) var segments := 10
 var instruments := 3
 
+@export_group("tracks")
+@export_subgroup("circle")
+@export var circle_track := true
+@export var circle_full: Texture
+@export var circle_empty: Texture
+@export var circle_sound: AudioStream
+
+@export_subgroup("square")
+@export var square_track := true
+@export var square_full: Texture
+@export var square_empty: Texture
+@export var square_sound: AudioStream
+
+@export_subgroup("triangle")
+@export var triangle_track := true
+@export var triangle_full: Texture
+@export var triangle_empty: Texture
+@export var triangle_sound: AudioStream
+
+@export_subgroup("diamond")
+@export var diamond_track := true
+@export var diamond_full: Texture
+@export var diamond_empty: Texture
+@export var diamond_sound: AudioStream
+
 const BEAT_BOX = preload("uid://cjvt3mcjpkrdc")
 
 @onready var square: VBoxContainer = %Square
 @onready var circle: VBoxContainer = %Circle
 @onready var triangle: VBoxContainer = %Triangle
+@onready var diamond: VBoxContainer = %Diamond
 
 const CIRCLE_SOUND = preload("uid://1qqvv4bys23h")
-const TIMELINE_ICON_CIRCLE_EMPTY = preload("uid://dhrop4am2idq5")
-const TIMELINE_ICON_CIRCLE_FULL = preload("uid://dv2yuyv2xofd")
-
-const SQUARE_SOUND = preload("uid://dmdfhemij0u7d")
-const TIMELINE_ICON_SQUARE_EMPTY = preload("uid://dk5iur5q7efwa")
-const TIMELINE_ICON_SQUARE_FULL = preload("uid://cxgm072xlw3j2")
-
-const TRI_SOUND = preload("uid://cn4t0bfycbj36")
-const TIMELINE_ICON_TRI_EMPTY = preload("uid://wxwrbc62cxnq")
-const TIMELINE_ICON_TRI_FULL = preload("uid://45kdtvib7r40")
 
 var _beat_boxes: Array[BeatBox] = []
 
 func _ready() -> void:
-	
-	var i := 0
-	
-	for s in range(segments):
-		i+= 1
-		var circ: BeatBox = BEAT_BOX.instantiate()
-		circ.unchecked_icon = TIMELINE_ICON_CIRCLE_EMPTY
-		circ.checked_icon = TIMELINE_ICON_CIRCLE_FULL
-		circ.sound = CIRCLE_SOUND
-		circ.track = Timeline.Track.CIRCLE
-		circle.add_child(circ)
-		_beat_boxes.append(circ)
-		
-		#if i %2 == 0:
-		var tri: BeatBox = BEAT_BOX.instantiate()
-		tri.unchecked_icon = TIMELINE_ICON_TRI_EMPTY
-		tri.checked_icon = TIMELINE_ICON_TRI_FULL
-		tri.sound = TRI_SOUND
-		tri.track = Timeline.Track.TRIANG
-		triangle.add_child(tri)
-		_beat_boxes.append(tri)
-		
-		#if i % 3 == 0:
-		var squa: BeatBox = BEAT_BOX.instantiate()
-		squa.unchecked_icon = TIMELINE_ICON_SQUARE_EMPTY
-		squa.checked_icon = TIMELINE_ICON_SQUARE_FULL
-		squa.sound = SQUARE_SOUND
-		squa.track = Timeline.Track.SQUARE
-		square.add_child(squa)
-		_beat_boxes.append(squa)
+	if diamond_track: diamond.show()
+	if triangle_track: triangle.show()
+	if square_track: square.show()
+	if circle_track: circle.show()
 
 func hit_range(from: float, to: float) -> void:
 	var own_height := self.size.y
@@ -62,3 +52,47 @@ func hit_range(from: float, to: float) -> void:
 		var along_ratio := beat_box.center.y / own_height
 		if from <= along_ratio and along_ratio <= to:
 			beat_box.hit() 
+
+func add_square(number:=1) -> void:
+	square.show()
+	for i in range(number):
+		var squa: BeatBox = BEAT_BOX.instantiate()
+		squa.unchecked_icon = square_empty
+		squa.checked_icon = square_full
+		squa.sound = square_sound
+		squa.track = Timeline.Track.SQUARE
+		square.add_child(squa)
+		_beat_boxes.append(squa)
+
+func add_triangle(number:=1) -> void:
+	triangle.show()
+	for i in range(number):
+		var tri: BeatBox = BEAT_BOX.instantiate()
+		tri.unchecked_icon = triangle_empty
+		tri.checked_icon = triangle_full
+		tri.sound = triangle_sound
+		tri.track = Timeline.Track.TRIANG
+		triangle.add_child(tri)
+		_beat_boxes.append(tri)
+
+func add_circle(number:=1) -> void:
+	circle.show()
+	for i in range(number):
+		var circ: BeatBox = BEAT_BOX.instantiate()
+		circ.unchecked_icon = circle_empty
+		circ.checked_icon = circle_full
+		circ.sound = circle_sound
+		circ.track = Timeline.Track.CIRCLE
+		circle.add_child(circ)
+		_beat_boxes.append(circ)
+
+func add_diamond(number:=1) -> void:
+	diamond.show()
+	for i in range(number):
+		var dia: BeatBox = BEAT_BOX.instantiate()
+		dia.unchecked_icon = diamond_empty
+		dia.checked_icon = diamond_full
+		dia.sound = diamond_sound
+		dia.track = Timeline.Track.DIAMON
+		diamond.add_child(dia)
+		_beat_boxes.append(dia)

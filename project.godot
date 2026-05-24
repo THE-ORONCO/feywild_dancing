@@ -33,6 +33,11 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/limbo_console/plugin.cfg")
 
+[global_group]
+
+dancer=""
+camera=""
+
 [gui]
 
 theme/custom="uid://b6j3p7kgq37hf"
@@ -89,8 +94,10 @@ limbo_console_search_history={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.019607844, 0.105882354, 0.1882353, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

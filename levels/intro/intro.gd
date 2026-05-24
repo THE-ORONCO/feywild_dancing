@@ -9,6 +9,8 @@ const BALL_ROOM_DAY_1 = preload("uid://c1e5gx7yahf33")
 
 func _ready() -> void:
 	player.move_cmp.finished_move.connect(func(): moving = false)
+	player.move_cmp.bumped_wall.connect(func(_i): moving = false)
+	player.move_cmp.bumped_entity.connect(func(_i): moving = false)
 	
 	dialogue.show_dialog([
 		"You have been lost in the forest for days now.",
@@ -31,23 +33,25 @@ func _on_fary_circle_area_entered(area: Area2D) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	
-	if event.is_action("ui_accept"):
-		if dialogue.dialogue_paused:
-			dialogue.continue_text()
-		
+	#if event.is_action("ui_accept"):
+		#if dialogue.dialogue_paused:
+			#dialogue.continue_text()
 	
 	if moving || dialogue.in_dialogue: return
 	
+	
 	var pos := player.position
 	if event.is_action("up"):
+		moving = true
 		player.move_cmp.move(pos + Vector2.UP * Values.TILE_SIZE, .1)
 	elif event.is_action("down"):	
+		moving = true
 		player.move_cmp.move(pos + Vector2.DOWN * Values.TILE_SIZE, .1)
 	elif event.is_action("left"):	
+		moving = true
 		player.move_cmp.move(pos + Vector2.LEFT * Values.TILE_SIZE, .1)
 	elif event.is_action("right"):	
+		moving = true
 		player.move_cmp.move(pos + Vector2.RIGHT * Values.TILE_SIZE, .1)
 	else: return 
 	
-	moving = true

@@ -2,129 +2,50 @@
 
 [ext_resource type="Script" uid="uid://d0nhl0c06ortq" path="res://levels/world/world.gd" id="1_036b0"]
 [ext_resource type="TileSet" uid="uid://c8q2q547ppt00" path="res://assets/tileset.tres" id="2_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://cwv16ikbhbore" path="res://entities/enemy/enemy.tscn" id="3_ioo17"]
+[ext_resource type="PackedScene" uid="uid://cwv16ikbhbore" path="res://entities/servant/servant.tscn" id="3_ioo17"]
 [ext_resource type="PackedScene" uid="uid://drj5l6cuickqd" path="res://entities/player/player.tscn" id="4_pkg7o"]
-[ext_resource type="Script" uid="uid://b8or0eoc85xlt" path="res://ui/tracks.gd" id="5_036b0"]
-[ext_resource type="Script" uid="uid://bth6sxw5f0rf6" path="res://ui/tracker.gd" id="5_dwbse"]
-[ext_resource type="Theme" uid="uid://b6j3p7kgq37hf" path="res://theme.tres" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://8o4qisnvy0an" path="res://ui/timeline_ui.tscn" id="5_h0il2"]
+[ext_resource type="Script" uid="uid://de80skdnvfqeu" path="res://entities/titania/titania.gd" id="6_le7ry"]
 
 [node name="World" type="Node2D" unique_id=25454870]
 script = ExtResource("1_036b0")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=599858402]
-tile_map_data = PackedByteArray("AAD9//3/AQAAAAAAAAD+//3/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP3/AQAAAAAAAAACAP3/AQAAAAAAAAADAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD9/wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD//wQAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAD+//7/AQABAAEAAAD+////AQABAAEAAAD+/wAAAQABAAEAAAD+/wEAAQABAAEAAAD+/wIAAQABAAEAAAD+/wMAAQABAAEAAAD//wMAAQABAAEAAAD//wIAAQABAAEAAAD//wEAAQABAAEAAAD///7/AQABAAEAAAD/////AQABAAEAAAD//wAAAQABAAEAAAAAAP//AQABAAEAAAAAAAAAAQABAAEAAAABAAAAAQABAAEAAAACAAAAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAADAAAAAQABAAEAAAADAP//AQABAAEAAAACAP//AQABAAEAAAABAP//AQABAAEAAAAAAP7/AQABAAEAAAABAP7/AQABAAEAAAACAP7/AQABAAEAAAADAP7/AQABAAEAAAAEAP7/AQABAAEAAAAEAP//AQABAAEAAAAEAAAAAQABAAEAAAAEAAEAAQABAAEAAAAEAAIAAQABAAEAAAADAAIAAQABAAEAAAACAAIAAQABAAEAAAABAAIAAQABAAEAAAABAAEAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQABAAEAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9//j/AAALAAEAAAD+//j/AAAKAAEAAQD///j/AAAKAAEAAQAAAPj/AAAKAAEAAQABAPj/AAAKAAEAAQACAPj/AAAKAAEAAQADAPj/AAAKAAEAAQAEAPj/AAAKAAEAAQAFAPj/AAAKAAEAAQAGAPj/AAAKAAEAAQD+//v/AAAKAAIAAAD///v/AAALAAIAAAAAAPv/AAALAAIAAAABAPv/AAALAAIAAAACAPv/AAALAAIAAAADAPv/AAALAAIAAAAEAPv/AAALAAIAAAAFAPv/AAALAAIAAAAGAPv/AAALAAIAAAAHAPv/AAALAAIAAAAIAPv/AAAMAAIAAAADAPn/AAAIAAIAAAADAPr/AAAiAAAAAAAHAPj/AAAKAAEAAQAIAPj/AAAKAAEAAQAJAPj/AAALAAEAAQD9//n/AAAKAAEAAAD9//r/AAAKAAEAAAD9//v/AAAJAAEAAAD8//v/AAAKAAEAAQAJAPn/AAAKAAEAAwAJAPr/AAAKAAEAAwAJAPv/AAAJAAEAAAAKAPv/AAAKAAEAAQD5//v/AAALAAEAAAD5//z/AAAKAAEAAAD5//3/AAAKAAEAAAD5//7/AAAKAAEAAAD5////AAAKAAEAAAD5/wAAAAAKAAEAAAD5/wEAAAAKAAEAAAD5/wIAAAAKAAEAAAD5/wMAAAAKAAEAAAANAPv/AAALAAEAAQANAPz/AAAKAAEAAwANAP3/AAAKAAEAAwANAP7/AAAKAAEAAwANAP//AAAKAAEAAwANAAAAAAAKAAEAAwANAAEAAAAKAAEAAwANAAIAAAAKAAEAAwANAAMAAAAKAAEAAwANAAQAAAAKAAEAAwD8/wYAAAAKAAEAAgD9/wYAAAAKAAEAAgD+/wYAAAAKAAEAAgD//wYAAAAKAAEAAgAAAAYAAAAKAAEAAgABAAYAAAAKAAEAAgACAAYAAAAKAAEAAgADAAYAAAAKAAEAAgAEAAYAAAAKAAEAAgAFAAYAAAAKAAEAAgAGAAYAAAAKAAEAAgAHAAYAAAAKAAEAAgAIAAYAAAAKAAEAAgAJAAYAAAAKAAEAAgAKAAYAAAAKAAEAAgD5/wYAAAALAAEAAgD5/wQAAAAKAAEAAAD5/wUAAAAKAAEAAAANAAUAAAAKAAEAAwANAAYAAAALAAEAAwD6/wYAAAAKAAEAAgD7/wYAAAAKAAEAAgALAAYAAAAKAAEAAgAMAAYAAAAKAAEAAgD7//v/AAAKAAEAAQD6//v/AAAKAAEAAQALAPv/AAAKAAEAAQAMAPv/AAAKAAEAAQA=")
 tile_set = ExtResource("2_pkg7o")
 
-[node name="Enemy" parent="." unique_id=678526148 instance=ExtResource("3_ioo17")]
-position = Vector2(-43, 51)
+[node name="Servant" parent="." unique_id=678526148 instance=ExtResource("3_ioo17")]
+position = Vector2(-28, 42)
 
-[node name="Enemy2" parent="." unique_id=1830185859 instance=ExtResource("3_ioo17")]
-position = Vector2(83, -15)
+[node name="Servant2" parent="." unique_id=1671932883 instance=ExtResource("3_ioo17")]
+position = Vector2(39, 12)
 
-[node name="Enemy4" parent="." unique_id=125044386 instance=ExtResource("3_ioo17")]
-position = Vector2(113, -15)
+[node name="Servant3" parent="." unique_id=1515921542 instance=ExtResource("3_ioo17")]
+position = Vector2(-24, 18)
 
-[node name="Enemy5" parent="." unique_id=1381921712 instance=ExtResource("3_ioo17")]
-position = Vector2(144, -14)
+[node name="Servant4" parent="." unique_id=33142420 instance=ExtResource("3_ioo17")]
+position = Vector2(35, -29)
 
-[node name="Enemy6" parent="." unique_id=182377191 instance=ExtResource("3_ioo17")]
-position = Vector2(48, -14)
+[node name="Servant5" parent="." unique_id=1410074329 instance=ExtResource("3_ioo17")]
+position = Vector2(25, 37)
 
-[node name="Enemy7" parent="." unique_id=1442220462 instance=ExtResource("3_ioo17")]
-position = Vector2(15, -48)
+[node name="Servant6" parent="." unique_id=221561392 instance=ExtResource("3_ioo17")]
+position = Vector2(78, -20)
 
-[node name="Enemy3" parent="." unique_id=1543606187 instance=ExtResource("3_ioo17")]
-position = Vector2(145, 80)
+[node name="Servant7" parent="." unique_id=415424361 instance=ExtResource("3_ioo17")]
+position = Vector2(77, 28)
 
-[node name="Player" parent="." unique_id=2114953000 instance=ExtResource("4_pkg7o")]
-position = Vector2(-16, -16)
+[node name="Servant8" parent="." unique_id=1778355722 instance=ExtResource("3_ioo17")]
+position = Vector2(104, -14)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=870665407]
+[node name="Player2" parent="." unique_id=2114953000 instance=ExtResource("4_pkg7o")]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=982909459]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("6_dwbse")
+[node name="TimelineUI" parent="." unique_id=517322816 instance=ExtResource("5_h0il2")]
+visible = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=234394127]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Camera2D" type="Camera2D" parent="." unique_id=40611621 groups=["camera"]]
 
-[node name="Tracker" type="Panel" parent="CanvasLayer/Control/HBoxContainer" unique_id=882314082]
-custom_minimum_size = Vector2(128, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("6_dwbse")
-script = ExtResource("5_dwbse")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/Tracker" unique_id=704702620]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/HBoxContainer/Tracker/MarginContainer" unique_id=584579261]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-max_value = 1.0
-step = 0.001
-fill_mode = 2
-show_percentage = false
-
-[node name="Tracks" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/Tracker/MarginContainer" unique_id=991488693]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("5_036b0")
-
-[node name="Square" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=659186142]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Triangle" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=1752158244]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Circle" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=1998607454]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer" unique_id=1892160124]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer" unique_id=241738546]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control3" type="Control" parent="CanvasLayer/Control/HBoxContainer" unique_id=114295438]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="Titania" type="Node2D" parent="." unique_id=774696715 node_paths=PackedStringArray("camera")]
+position = Vector2(57, -88)
+script = ExtResource("6_le7ry")
+camera = NodePath("../Camera2D")

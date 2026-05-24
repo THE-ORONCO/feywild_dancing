@@ -3,7 +3,6 @@ extends TextureButton
 
 
 @export var track: Timeline.Track
-@export var center_color: Color = Color.PINK
 @export_range(0., 1.) var ping_time := .2
 @export_range(0., 20) var ping_radius := 20.
 @export var sound: AudioStream
@@ -28,7 +27,7 @@ func hit(reset:bool = false) -> void:
 		return 
 	if _hit_tween:
 		_hit_tween.kill()
-	_hit_color = center_color
+	_hit_color = Timeline.track_color(track)
 	_hit_r = 0.
 	_hit_tween = create_tween()
 	_hit_tween.tween_property(self, "_hit_r", ping_radius, ping_time).set_ease(Tween.EASE_OUT)
@@ -60,6 +59,6 @@ func _process(delta: float) -> void:
 
 	
 func _draw() -> void:
-	draw_circle(size / 2., 2., center_color)
+	#draw_circle(size / 2., 2., center_color)
 	if is_instance_valid(_hit_tween) && _hit_tween.is_running():
 		draw_circle(size / 2., _hit_r, _hit_color, false)

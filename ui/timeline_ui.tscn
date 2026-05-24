@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://8o4qisnvy0an"]
+
+[ext_resource type="Script" uid="uid://kjkay4p68s8d" path="res://ui/timeline_ui.gd" id="1_duitu"]
+[ext_resource type="Theme" uid="uid://b6j3p7kgq37hf" path="res://theme.tres" id="1_nes8u"]
+[ext_resource type="Script" uid="uid://bth6sxw5f0rf6" path="res://ui/tracker.gd" id="2_duitu"]
+[ext_resource type="Script" uid="uid://b8or0eoc85xlt" path="res://ui/tracks.gd" id="3_ek2f7"]
+[ext_resource type="Texture2D" uid="uid://cfpn50tk1xso1" path="res://assets/timeline_icons_big_4.png" id="5_6fo7n"]
+[ext_resource type="Texture2D" uid="uid://40et1rosnd8q" path="res://assets/timeline_icons_big_3.png" id="6_iouqd"]
+[ext_resource type="AudioStream" uid="uid://cn4t0bfycbj36" path="res://assets/689484__danvgc__dw-poker-cards-snare-002-edit.wav" id="7_dwl8d"]
+[ext_resource type="Texture2D" uid="uid://lbxewiox6gp2" path="res://assets/timeline_icons_big_2.png" id="8_hw5gs"]
+[ext_resource type="Texture2D" uid="uid://bejkx0x2j8bxs" path="res://assets/timeline_icons_big_1.png" id="9_dhvba"]
+[ext_resource type="AudioStream" uid="uid://1qqvv4bys23h" path="res://assets/777__vitriolix__808_kick.wav" id="10_3f0pv"]
+[ext_resource type="Texture2D" uid="uid://dqnidgusxe7og" path="res://assets/timeline_icons_big_8.png" id="11_v7ego"]
+[ext_resource type="Texture2D" uid="uid://bm6ans7ed2r7k" path="res://assets/timeline_icons_big_7.png" id="12_4itlm"]
+[ext_resource type="AudioStream" uid="uid://dmdfhemij0u7d" path="res://assets/250552__druminfected__metronome.wav" id="13_afied"]
+[ext_resource type="Texture2D" uid="uid://d3voe12lwrvtu" path="res://assets/timeline_icons_big_6.png" id="14_k48kp"]
+[ext_resource type="Texture2D" uid="uid://dxhqpb373lck8" path="res://assets/timeline_icons_big_5.png" id="15_sv0qn"]
+[ext_resource type="AudioStream" uid="uid://ca456s6uj5oo3" path="res://assets/374532__sgossner__violin-section-pizzicato-f5-vlnens_pizz_g4_v2_rr2.wav" id="16_ku6qo"]
+
+[node name="TimelineUI" type="CanvasLayer" unique_id=517322816]
+script = ExtResource("1_duitu")
+
+[node name="Control" type="Control" parent="." unique_id=340890554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_nes8u")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=2011819673]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tracker" type="Panel" parent="Control/HBoxContainer" unique_id=5344825]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_nes8u")
+script = ExtResource("2_duitu")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/Tracker" unique_id=1720330390]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/Tracker/MarginContainer" unique_id=1135511737]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+max_value = 1.0
+step = 0.001
+fill_mode = 2
+show_percentage = false
+
+[node name="Tracks" type="HBoxContainer" parent="Control/HBoxContainer/Tracker/MarginContainer" unique_id=1116937711]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("3_ek2f7")
+circle_track = false
+circle_full = ExtResource("5_6fo7n")
+circle_empty = ExtResource("6_iouqd")
+circle_sound = ExtResource("7_dwl8d")
+square_track = false
+square_full = ExtResource("8_hw5gs")
+square_empty = ExtResource("9_dhvba")
+square_sound = ExtResource("10_3f0pv")
+triangle_track = false
+triangle_full = ExtResource("11_v7ego")
+triangle_empty = ExtResource("12_4itlm")
+triangle_sound = ExtResource("13_afied")
+diamond_track = false
+diamond_full = ExtResource("14_k48kp")
+diamond_empty = ExtResource("15_sv0qn")
+diamond_sound = ExtResource("16_ku6qo")
+
+[node name="Square" type="VBoxContainer" parent="Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=1715389332]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Triangle" type="VBoxContainer" parent="Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=96498189]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Circle" type="VBoxContainer" parent="Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=1839205663]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Diamond" type="VBoxContainer" parent="Control/HBoxContainer/Tracker/MarginContainer/Tracks" unique_id=521832286]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control/HBoxContainer" unique_id=1207398532]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="Control/HBoxContainer" unique_id=1057368909]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="Control/HBoxContainer" unique_id=495505110]
+layout_mode = 2
+size_flags_horizontal = 3

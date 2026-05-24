@@ -9,6 +9,7 @@ const inputs = {"right": Vector2.RIGHT,
 signal bumped_entity(entity: CollisionObject2D)
 signal bumped_wall(wall: TileMapLayer)
 signal took_damage(attacker: CollisionObject2D)
+signal made_mistake
 
 @onready var move_cmp: MoveCmp = %MoveCmp
 
@@ -17,6 +18,8 @@ var _reset_buffer := false
 
 func _ready() -> void:
 	move_cmp.bumped_wall.connect(func(_i): $Thud.play())
+	bumped_entity.connect(made_mistake.emit)
+	
 	
 func _input(event: InputEvent):
 	var any_pressed := false
@@ -27,6 +30,3 @@ func _input(event: InputEvent):
 			
 	if !any_pressed:
 		_reset_buffer = true
-
-
-		

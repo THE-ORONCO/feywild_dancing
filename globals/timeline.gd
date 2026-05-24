@@ -63,3 +63,11 @@ func next_tick_delta(track: Track) -> float:
 	# if no mark was found use the time left + the time till the first mark
 	var first_mark_delta :float = marks[0].ratio * Metronome.loop_time()
 	return Metronome.time_left() + first_mark_delta
+
+func track_color(track: Track) -> Color:
+	match track:
+		Track.SQUARE: return Color.html("e6482e")
+		Track.CIRCLE: return Color.html("3cacd7")
+		Track.TRIANG: return Color.html("f4b514")
+		Track.DIAMON: return Color.html("cfc6b8")
+	return Color.PINK

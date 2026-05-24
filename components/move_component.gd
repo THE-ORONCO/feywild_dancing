@@ -1,11 +1,12 @@
 class_name MoveCmp
-extends Node
+extends Node2D
 
 signal bumped_entity(entity: CollisionObject2D)
 signal bumped_wall(wall: TileMapLayer)
 signal finished_move
 
 @export var moved_entity: Area2D
+@export var move_on_track: Timeline.Track
 
 var target_dir := Vector2.ZERO
 
@@ -33,6 +34,7 @@ func _ready() -> void:
 
 func move(target: Vector2, next_tick_delta: float):
 	var move_delta := target - moved_entity.position
+	_move_dir = move_delta.normalized()
 	_ray.target_position = move_delta
 	_ray.force_raycast_update()
 	
@@ -48,6 +50,8 @@ func move(target: Vector2, next_tick_delta: float):
 	else: # bump
 		var collider := _ray.get_collider()
 		_emit_collision_info(collider)
+	
+	queue_redraw()
 			
 func turn_right(times: int = 1) -> void:
 	target_dir = target_dir.rotated((PI/2) * times)
@@ -64,17 +68,23 @@ func _emit_collision_info(collider: Object) -> void:
 		print("bumped entity ", collider)
 
 func _do_move(track: Timeline.Track, ntd: float) -> void:
-	match track:
-		Timeline.Track.SQUARE: 
-			var delta := target_dir * Values.TILE_SIZE
-			move(_last_safe_position + delta, ntd)
-	#if _reset_buffer:
-		#_reset_buffer = false
-		#_input_buffer = Vector2.ZERO
+	if track == move_on_track:
+		var delta := target_dir * Values.TILE_SIZE
+		move(_last_safe_position + delta, ntd)
 	
 func _handle_collision(body: CollisionObject2D) -> void:
 	if _move_tween != null || is_instance_valid(_move_tween):
 		_move_tween.kill()
-		move(_last_safe_position, Timeline.next_tick_delta(Timeline.Track.SQUARE))
+		move(_last_safe_position, Timeline.next_tick_delta(move_on_track))
 	_emit_collision_info(body)
 		
+func _draw() -> void:
+	var tri_tip := _move_dir * Values.TILE_SIZE / 2.2
+	var head := -_move_dir * 5
+	draw_circle(
+		tri_tip,
+		1.,
+		Timeline.track_color(move_on_track)
+	)
+
+	

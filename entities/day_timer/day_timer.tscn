@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://it8bljs22nag"]
+
+[ext_resource type="Script" uid="uid://oto0f8xqg2c0" path="res://entities/day_timer/day_timer.gd" id="1_i3c5w"]
+
+[sub_resource type="Gradient" id="Gradient_1p6a0"]
+offsets = PackedFloat32Array(0.07333333, 0.26666668, 0.5133333, 0.7366667, 0.9266667)
+colors = PackedColorArray(0.019607844, 0.105882354, 0.1882353, 1, 0.6431373, 0.44313726, 0.3019608, 1, 0.37254903, 0.40784314, 0.7372549, 1, 0.6431373, 0.44313726, 0.3019608, 1, 0.019607844, 0.105882354, 0.1882353, 1)
+
+[node name="DayTimer" type="Node" unique_id=1955838292]
+script = ExtResource("1_i3c5w")
+over_day_gradient = SubResource("Gradient_1p6a0")
+metadata/_custom_type_script = "uid://oto0f8xqg2c0"
+
+[node name="Timer" type="Timer" parent="." unique_id=877872542]
+unique_name_in_owner = true
+wait_time = 60.0

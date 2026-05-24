@@ -20,7 +20,7 @@ func show_dialog(lines: Array[String]) -> Signal:
 			text_label.text = line
 			text_label.visible_ratio = 0.
 			)
-		dialogue_tween.tween_property(text_label, "visible_characters", line.length(), line.length() * 0.03)
+		dialogue_tween.tween_property(text_label, "visible_characters", line.length(), line.length() * 0.02)
 		dialogue_tween.tween_callback(dialogue_tween.pause)
 		
 	dialogue_tween.tween_property(self, "in_dialogue", false, 0.)
@@ -30,3 +30,8 @@ func show_dialog(lines: Array[String]) -> Signal:
 
 func continue_text() -> void:
 	dialogue_tween.play()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("ui_accept"):
+		if self.dialogue_paused:
+			self.continue_text()
