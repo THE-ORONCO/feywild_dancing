@@ -71,3 +71,9 @@ func track_color(track: Track) -> Color:
 		Track.TRIANG: return Color.html("f4b514")
 		Track.DIAMON: return Color.html("cfc6b8")
 	return Color.PINK
+	
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("reset"):
+		Values.seen_dialogue = {}
+		get_tree().change_scene_to_file.call_deferred("res://levels/world/intro.tscn")
